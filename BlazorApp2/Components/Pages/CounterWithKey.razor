@@ -1,0 +1,30 @@
+﻿@rendermode InteractiveServer
+
+<p role="status">Current count: @currentCount</p>
+<p role="status">Current count (AllowUpdates): @currentCountAllowUpdates</p>
+
+<button class="btn btn-primary" @onclick="IncrementCount">Click me</button>
+
+@code {
+    [PersistentState(AllowUpdates = true)]
+    public int currentCount { get; set; } = 5;
+
+    [PersistentState(AllowUpdates = false)]
+    public int currentCountAllowUpdates { get; set; } = 5;
+
+
+    protected override async Task OnInitializedAsync()
+    {
+        if (!RendererInfo.IsInteractive)
+        {
+            currentCount = 10;
+            currentCountAllowUpdates = 10;
+        }
+    }
+
+    private void IncrementCount()
+    {
+        currentCount++;
+        currentCountAllowUpdates++;
+    }
+}
