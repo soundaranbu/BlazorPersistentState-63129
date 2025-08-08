@@ -1,11 +1,12 @@
+# Blazor Persistent State Behavior
 
-The `Counter` page component has a `PersistentState` attribute for the currentCount property
-- The count persists and restores successfully on page load/refresh
-- But it doesn't restore on navigating between pages
+- The `Counter` page component uses a `PersistentState` attribute for the `currentCount` property.
+    - The count persists and restores successfully on page load or refresh.
+    - However, it does **NOT** restore when navigating between pages.
 
-The Home page uses another `CounterWithKey` componet with two variations
-- One property with `AllowUpdates` set to `true`
-- Another property with `AllowUpdates` set to `false`
-- It also uses `@key`
+- The Home page uses a `CounterWithKey` component with two variations:
+    - One property with `AllowUpdates` set to `true`.
+    - Another property with `AllowUpdates` set to `false`.
+    - It also uses the `@key` directive.
 
-In both of these cases, the **persisted value is not restored** upon page navigation
+In both cases, the **persisted value is NOT restored** upon page navigation.
